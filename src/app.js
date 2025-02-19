@@ -1,36 +1,19 @@
 const express = require("express");
+const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
-const mongoURI = process.env.MONGO_URI;
-const { MongoClient, ServerApiVersion } = require("mongodb");
-const port = process.env.PORT || 3000;
-
 const app = express();
+const connectToDatabase = require("./services/database");
+const leagueRouter = require("./routes/leagueRoutes");
 
-app.use(express.json());
+connectToDatabase();
 app.use(cors());
+app.use(express.json());
 
-const client = new MongoClient(mongoURI, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  },
+app.use("/league", leagueRouter);
+app.use((req, res) => {
+  res.status(404).json({ error: "Puslapis nerastas" });
 });
-
-const run = async () => {
-  try {
-    await client.connect();
-
-    await client.db("admin").command({ ping: 1 });
-    console.log(
-      "Pinged your deployment. You successfully connected to MongoDB!"
-    );
-  } finally {
-  }
-};
-
-run().catch((error) => console.log);
 
 app.get("/", (req, res) => {
   res.status(200);
