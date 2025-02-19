@@ -1,13 +1,11 @@
 const mongoose = require("mongoose");
-const mongoURI = process.env.MONGO_URI;
 
 const connectToDatabase = async () => {
-  const uri = `${mongoURI}`;
   try {
-    await mongoose.connect(uri);
+    await mongoose.connect(process.env.MONGO_URI);
     console.log("Prisijungta prie duomenu bazes");
   } catch (error) {
-    console.error("Klaida jungianties prie MongoDB");
+    console.error("Klaida jungianties prie MongoDB", error.message);
     process.exit(1);
   }
 };

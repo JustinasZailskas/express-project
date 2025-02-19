@@ -18,7 +18,7 @@ app.use("/league", leagueRouter);
 app.use((req, res) => {
   res.status(404).json({ error: "Puslapis nerastas" });
 });
-
+// const port = process.env.PORT || 3000;
 // app.listen(port, () => {
 //   console.log(`Server is running on port ${port}`);
 // });
