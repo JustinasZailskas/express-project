@@ -9,4 +9,5 @@ exports.getAllLeagues = (req, res) => {
     console.log(leagueItems);
     res.json(leagueItems);
   });
+  console.log("Bet kas");
 };
