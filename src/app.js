@@ -23,12 +23,12 @@ app.use((req, res) => {
 //   console.log(`Server is running on port ${port}`);
 // });
 
-const port = process.env.PORT || 3000;
-// Paleiskite serverį po sėkmingo prisijungimo prie duomenų bazės
-mongoose.connection.once("open", () => {
-  app.listen(port, () => {
-    console.log(`Serveris veikia ant ${port} porto`);
-  });
-});
+// const port = process.env.PORT || 3000;
+// // Paleiskite serverį po sėkmingo prisijungimo prie duomenų bazės
+// mongoose.connection.once("open", () => {
+//   app.listen(port, () => {
+//     console.log(`Serveris veikia ant ${port} porto`);
+//   });
+// });
 
 module.exports = app;
