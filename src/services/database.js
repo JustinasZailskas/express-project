@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const mongoURI = process.env.MONGO_URI;
 
 const connectToDatabase = async () => {
-  const uri = `${mongoURI}/driftApp`;
+  const uri = `${mongoURI}`;
   try {
     await mongoose.connect(uri);
     console.log("Prisijungta prie duomenu bazes");
